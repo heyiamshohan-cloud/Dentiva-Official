@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>Dentiva.App</RootNamespace>
+    <AssemblyName>Dentiva</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\dentiva.ico</ApplicationIcon>
+    <Description>Dentiva — Dental Practice Management System for Windows.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Dentiva.Core\Dentiva.Core.csproj" />
+    <ProjectReference Include="..\Dentiva.Infrastructure\Dentiva.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\dentiva.ico" />
+    <Resource Include="Assets\logo-512.png" />
+    <Resource Include="Assets\logo-256.png" />
+    <Resource Include="Assets\logo-128.png" />
+    <Resource Include="Assets\logo-48.png" />
+    <Resource Include="Assets\logo-32.png" />
+    <Resource Include="Assets\splash.png" />
+    <Resource Include="Assets\Fonts\*.ttf" />
+    <SplashScreen Include="Assets\splash.png" />
+  </ItemGroup>
+
+</Project>

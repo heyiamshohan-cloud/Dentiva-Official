@@ -1,0 +1,22 @@
+<Window x:Class="Dentiva.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Dentiva"
+        Width="1280" Height="800"
+        WindowStartupLocation="CenterScreen"
+        Background="{StaticResource Brush.Canvas}">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Assets/logo-256.png" Width="128" Height="128" HorizontalAlignment="Center" />
+            <TextBlock Text="Dentiva"
+                       FontFamily="{StaticResource Font.SemiBold}"
+                       FontSize="{StaticResource FontSize.Display}"
+                       Foreground="{StaticResource Brush.Ink}"
+                       HorizontalAlignment="Center" Margin="0,24,0,0" />
+            <TextBlock Text="Dental Practice Management System"
+                       FontSize="{StaticResource FontSize.Body}"
+                       Foreground="{StaticResource Brush.InkSecondary}"
+                       HorizontalAlignment="Center" Margin="0,6,0,0" />
+        </StackPanel>
+    </Grid>
+</Window>
