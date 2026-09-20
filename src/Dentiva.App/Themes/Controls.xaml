@@ -1,12 +1,12 @@
-<!-- Minimal baseline so the solution compiles; the full implicit-style
-     control library lands with the shell milestone. -->
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="TextBlock">
-        <Setter Property="FontFamily" Value="{StaticResource Font.Base}" />
-        <Setter Property="Foreground" Value="{StaticResource Brush.Ink}" />
-        <Setter Property="TextRenderingMode" Value="ClearType" />
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Typography.xaml" />
+        <ResourceDictionary Source="Buttons.xaml" />
+        <ResourceDictionary Source="Inputs.xaml" />
+        <ResourceDictionary Source="Data.xaml" />
+        <ResourceDictionary Source="Chrome.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 
 </ResourceDictionary>

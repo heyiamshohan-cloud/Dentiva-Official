@@ -1,0 +1,77 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Typographic scale. Every text style inherits the theme font. -->
+
+    <Style x:Key="TextBase" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.Base}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Body}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Ink}" />
+        <Setter Property="TextRenderingMode" Value="ClearType" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+    </Style>
+
+    <Style x:Key="Text.Display" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.Bold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Display}" />
+    </Style>
+
+    <Style x:Key="Text.Title" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.SemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Title}" />
+    </Style>
+
+    <Style x:Key="Text.Subtitle" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.SemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Subtitle}" />
+    </Style>
+
+    <Style x:Key="Text.BodyLarge" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.BodyLarge}" />
+    </Style>
+
+    <Style x:Key="Text.BodyEmphasis" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.Medium}" />
+    </Style>
+
+    <Style x:Key="Text.Secondary" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="Foreground" Value="{StaticResource Brush.InkSecondary}" />
+    </Style>
+
+    <Style x:Key="Text.Small" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Small}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.InkSecondary}" />
+    </Style>
+
+    <Style x:Key="Text.Caption" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.Medium}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Caption}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.InkTertiary}" />
+    </Style>
+
+    <Style x:Key="Text.PageTitle" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.SemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Title}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Ink}" />
+    </Style>
+
+    <!-- Form label -->
+    <Style x:Key="FormLabel" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.Medium}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.Small}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.InkSecondary}" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0,0,12,0" />
+    </Style>
+
+    <Style x:Key="FormSectionHeader" TargetType="TextBlock" BasedOn="{StaticResource TextBase}">
+        <Setter Property="FontFamily" Value="{DynamicResource Font.SemiBold}" />
+        <Setter Property="FontSize" Value="{StaticResource FontSize.BodyLarge}" />
+        <Setter Property="Foreground" Value="{StaticResource Brush.Ink}" />
+        <Setter Property="Margin" Value="0,0,0,4" />
+    </Style>
+
+    <!-- Implicit TextBlock keeps the theme font everywhere -->
+    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBase}" />
+
+</ResourceDictionary>

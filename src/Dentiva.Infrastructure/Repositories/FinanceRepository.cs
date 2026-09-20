@@ -99,12 +99,13 @@ public sealed class FinanceRepository
         if (!string.IsNullOrWhiteSpace(search)) { p.Add("s", search.Trim() + "%"); conditions.Add("(e.description LIKE @s OR e.vendor LIKE @s)"); }
         p.Add("limit", limit);
 
-        return connection.Query<ExpenseListItem>("""
+        var sql = """
             SELECT e.id AS Id, e.date AS Date, e.category_id AS CategoryId, c.name AS CategoryName,
                    e.description AS Description, e.amount_minor AS AmountMinor, e.vendor AS Vendor, e.method_label AS MethodLabel
             FROM expenses e JOIN expense_categories c ON c.id = e.category_id
-            WHERE """ + string.Join(" AND ", conditions) + " ORDER BY e.date DESC, e.id DESC LIMIT @limit",
-            p).AsList();
+            """ + " WHERE " + string.Join(" AND ", conditions) + " ORDER BY e.date DESC, e.id DESC LIMIT @limit";
+
+        return connection.Query<ExpenseListItem>(sql, p).AsList();
     }
 
     // ---------- Other income ----------
