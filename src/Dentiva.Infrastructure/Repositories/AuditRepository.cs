@@ -1,5 +1,6 @@
 using Dentiva.Core.Domain;
 using Dapper;
+using Microsoft.Data.Sqlite;
 
 namespace Dentiva.Infrastructure.Repositories;
 

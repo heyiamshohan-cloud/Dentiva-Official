@@ -1,5 +1,6 @@
 using Dentiva.Core.Domain;
 using Dentiva.Core.Numbering;
+using Dentiva.Core.Settings;
 using Dapper;
 using Microsoft.Data.Sqlite;
 
