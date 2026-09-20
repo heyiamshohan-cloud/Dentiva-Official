@@ -1,3 +1,5 @@
+using Dentiva.Core.Domain;
+
 namespace Dentiva.Core.Time;
 
 public readonly record struct DateRange(DateOnly From, DateOnly To)

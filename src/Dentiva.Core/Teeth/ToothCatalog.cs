@@ -1,3 +1,5 @@
+using Dentiva.Core.Domain;
+
 namespace Dentiva.Core.Teeth;
 
 /// <summary>A single tooth in the FDI two-digit notation.</summary>
