@@ -6,4 +6,9 @@
     <Description>Dentiva domain model, business rules and localization core.</Description>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\en.json" />
+    <EmbeddedResource Include="Localization\bn.json" />
+  </ItemGroup>
+
 </Project>
