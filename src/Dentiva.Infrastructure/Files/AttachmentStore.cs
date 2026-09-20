@@ -85,10 +85,10 @@ public sealed class AttachmentStore
 
     public Stream OpenRead(AttachmentInfo info) => File.OpenRead(PathOf(info));
 
-    public AttachmentRepository.RepositoryAttachment? GetMetadata(long id)
+    public AttachmentInfo? GetMetadata(long id)
     {
         using var connection = _factory.CreateOpenConnection();
-        return Repository.Get(connection, id);
+        return AttachmentRepository.Get(connection, id);
     }
 
     private long Insert(AttachmentInfo info)
