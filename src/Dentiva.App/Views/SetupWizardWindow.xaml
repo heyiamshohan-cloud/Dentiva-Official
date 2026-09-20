@@ -1,0 +1,191 @@
+<Window x:Class="Dentiva.App.Views.SetupWizardWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:loc="clr-namespace:Dentiva.App.Infrastructure"
+        Title="Dentiva — Setup"
+        Width="920" Height="660"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="{StaticResource Brush.Canvas}">
+    <Border BorderBrush="{StaticResource Brush.Border}" BorderThickness="1">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Grid.Row="0" Background="{StaticResource Brush.Surface}" BorderBrush="{StaticResource Brush.BorderSubtle}" BorderThickness="0,0,0,1" Padding="36,26">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="/Assets/logo-128.png" Width="40" Height="40" />
+                        <TextBlock Text="Dentiva" Style="{StaticResource Text.Title}" VerticalAlignment="Center" Margin="14,0,0,0" />
+                    </StackPanel>
+                    <TextBlock Text="{loc:Loc setup.title}" Style="{StaticResource Text.Subtitle}" Margin="0,18,0,0" />
+                    <TextBlock Text="{loc:Loc setup.subtitle}" Style="{StaticResource Text.Secondary}" Margin="0,4,0,0" />
+                    <ProgressBar x:Name="Progress" Height="4" Minimum="1" Maximum="6" Value="1" Margin="0,18,0,0" />
+                </StackPanel>
+            </Border>
+
+            <!-- Step content -->
+            <Grid Grid.Row="1" Margin="36,26">
+                <Grid x:Name="Step1">
+                    <StackPanel MaxWidth="560" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Text.Subtitle}" Text="Choose your language" />
+                        <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,22"
+                                   Text="You can change the language at any time in Settings. Bengali is translated by the product team, not machine-generated." />
+                        <RadioButton x:Name="LangEnglish" GroupName="Language" IsChecked="True" Margin="0,0,0,10">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="English" FontWeight="SemiBold" />
+                                <TextBlock Text=" — professional English interface" Style="{StaticResource Text.Secondary}" />
+                            </StackPanel>
+                        </RadioButton>
+                        <RadioButton x:Name="LangBengali" GroupName="Language">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="বাংলা" FontFamily="{StaticResource Font.Bengali}" FontWeight="SemiBold" />
+                                <TextBlock Text=" — সম্পূর্ণ বাংলা ইন্টারফেস" Style="{StaticResource Text.Secondary}" FontFamily="{StaticResource Font.Bengali}" />
+                            </StackPanel>
+                        </RadioButton>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step2" Visibility="Collapsed">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel MaxWidth="640" HorizontalAlignment="Left">
+                            <TextBlock Style="{StaticResource Text.Subtitle}" Text="Your dental practice" />
+                            <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,20" Text="This information appears on invoices, receipts and prescriptions." />
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                                    <RowDefinition Height="Auto" /><RowDefinition Height="12" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock Text="Clinic name *" Style="{StaticResource FormLabel}" />
+                                <TextBox x:Name="ClinicNameBox" Grid.Column="1" Height="36" />
+
+                                <TextBlock Grid.Row="2" Text="Dentist / doctor name *" Style="{StaticResource FormLabel}" />
+                                <TextBox x:Name="DoctorNameBox" Grid.Row="2" Grid.Column="1" Height="36" />
+
+                                <TextBlock Grid.Row="4" Text="Qualifications" Style="{StaticResource FormLabel}" />
+                                <TextBox x:Name="DegreesBox" Grid.Row="4" Grid.Column="1" Height="36" Tag="e.g. BDS, FCPS (Conservative Dentistry)" />
+
+                                <TextBlock Grid.Row="6" Text="Phone *" Style="{StaticResource FormLabel}" />
+                                <TextBox x:Name="ClinicPhoneBox" Grid.Row="6" Grid.Column="1" Height="36" />
+
+                                <TextBlock Grid.Row="8" Text="Email" Style="{StaticResource FormLabel}" />
+                                <TextBox x:Name="ClinicEmailBox" Grid.Row="8" Grid.Column="1" Height="36" />
+
+                                <TextBlock Grid.Row="10" Text="Address" Style="{StaticResource FormLabel}" VerticalAlignment="Top" Margin="0,8,12,0" />
+                                <TextBox x:Name="ClinicAddressBox" Grid.Row="10" Grid.Column="1" Style="{StaticResource MultilineTextBox}" MaxHeight="90" />
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+
+                <Grid x:Name="Step3" Visibility="Collapsed">
+                    <StackPanel MaxWidth="560" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Text.Subtitle}" Text="Currency and formats" />
+                        <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,20" Text="Used across billing, finance and reports." />
+
+                        <TextBlock Text="{loc:Loc misc.currency}" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <ComboBox x:Name="CurrencyBox" Height="38" Width="280" HorizontalAlignment="Left" SelectionChanged="OnCurrencyChanged" />
+                        <TextBox x:Name="CustomCurrencyBox" Height="36" Width="280" HorizontalAlignment="Left" Margin="0,10,0,0"
+                                 Visibility="Collapsed" Tag="Custom currency symbol, e.g. ৳" />
+
+                        <TextBlock Text="{loc:Loc misc.dateFormat}" Style="{StaticResource FormLabel}" Margin="0,22,0,6" />
+                        <ComboBox x:Name="DateFormatBox" Height="38" Width="280" HorizontalAlignment="Left" />
+                        <TextBlock Text="{loc:Loc misc.timeFormat}" Style="{StaticResource FormLabel}" Margin="0,22,0,6" />
+                        <ComboBox x:Name="TimeFormatBox" Height="38" Width="280" HorizontalAlignment="Left" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step4" Visibility="Collapsed">
+                    <StackPanel MaxWidth="560" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Text.Subtitle}" Text="Working hours and appointments" />
+                        <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,20" Text="Sets your daily schedule and default appointment length." />
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                            <TextBlock Text="Opens at" Style="{StaticResource FormLabel}" Width="120" />
+                            <ComboBox x:Name="OpenHourBox" Width="100" Height="36" />
+                            <TextBlock Text="Closes at" Style="{StaticResource FormLabel}" Width="90" Margin="24,0,0,0" />
+                            <ComboBox x:Name="CloseHourBox" Width="100" Height="36" />
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,18">
+                            <TextBlock Text="Appointment length" Style="{StaticResource FormLabel}" Width="120" />
+                            <ComboBox x:Name="DurationBox" Width="100" Height="36" />
+                            <TextBlock Text="minutes" Style="{StaticResource Text.Secondary}" VerticalAlignment="Center" Margin="8,0,0,0" />
+                        </StackPanel>
+
+                        <TextBlock Text="Working days" Style="{StaticResource FormLabel}" Margin="0,0,0,10" />
+                        <StackPanel x:Name="WorkingDaysPanel" Orientation="Horizontal" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step5" Visibility="Collapsed">
+                    <StackPanel MaxWidth="560" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Text.Subtitle}" Text="Create your administrator account" />
+                        <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,20"
+                                   Text="This account manages users and settings. Your password is stored only as a PBKDF2 hash — it is never saved in plain text." />
+
+                        <TextBlock Text="Username *" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="AdminUsernameBox" Height="36" Width="320" HorizontalAlignment="Left" Tag="e.g. admin" />
+
+                        <TextBlock Text="Password *" Style="{StaticResource FormLabel}" Margin="0,18,0,6" />
+                        <PasswordBox x:Name="AdminPasswordBox" Height="36" Width="320" HorizontalAlignment="Left" PasswordChanged="OnAdminPasswordChanged" />
+                        <ProgressBar x:Name="StrengthBar" Height="4" Width="320" HorizontalAlignment="Left" Minimum="0" Maximum="4" Margin="0,8,0,0" />
+                        <TextBlock x:Name="StrengthText" Style="{StaticResource Text.Caption}" Margin="0,4,0,0" />
+
+                        <TextBlock Text="Confirm password *" Style="{StaticResource FormLabel}" Margin="0,18,0,6" />
+                        <PasswordBox x:Name="AdminPassword2Box" Height="36" Width="320" HorizontalAlignment="Left" />
+
+                        <TextBlock x:Name="SecurityError" Foreground="{StaticResource Brush.Danger}" Style="{StaticResource Text.Small}" Margin="0,12,0,0" Visibility="Collapsed" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Step6" Visibility="Collapsed">
+                    <StackPanel MaxWidth="620" HorizontalAlignment="Left">
+                        <TextBlock Style="{StaticResource Text.Subtitle}" Text="Backups keep your records safe" />
+                        <TextBlock Style="{StaticResource Text.Secondary}" Margin="0,6,0,20"
+                                   Text="Dentiva will create an automatic backup daily. Choose where backups should be stored — an external or secondary drive is recommended." />
+
+                        <Border Style="{StaticResource Card}" Padding="18">
+                            <StackPanel>
+                                <CheckBox x:Name="AutoBackupCheck" Content="Enable automatic daily backups" IsChecked="True" />
+                                <StackPanel Orientation="Horizontal" Margin="0,14,0,0">
+                                    <TextBox x:Name="BackupFolderBox" Height="36" Width="360" IsReadOnly="True" />
+                                    <Button Content="Choose folder…" Margin="10,0,0,0" Padding="12,7" Click="OnChooseBackupFolder" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock Style="{StaticResource Text.Small}" Margin="0,18,0,0" TextWrapping="Wrap"
+                                   Text="You can adjust every choice you made here later in Settings. Nothing about the setup is permanent." />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!-- Footer navigation -->
+            <Border Grid.Row="2" Background="{StaticResource Brush.Surface}" BorderBrush="{StaticResource Brush.BorderSubtle}" BorderThickness="0,1,0,0" Padding="36,16">
+                <Grid>
+                    <Button x:Name="BackButton" Content="{loc:Loc common.back}" Width="110" Height="36" HorizontalAlignment="Left" Click="OnBack" IsEnabled="False" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <TextBlock x:Name="StepLabel" Style="{StaticResource Text.Caption}" VerticalAlignment="Center" Margin="0,0,18,0" Text="Step 1 of 6" />
+                        <Button x:Name="NextButton" Content="{loc:Loc common.next}" Style="{StaticResource PrimaryButton}" Width="130" Height="36" Click="OnNext" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
+</Window>

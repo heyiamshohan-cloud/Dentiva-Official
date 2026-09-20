@@ -1,6 +1,7 @@
 <Application x:Class="Dentiva.App.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:infra="clr-namespace:Dentiva.App.Infrastructure"
              ShutdownMode="OnExplicitShutdown">
     <Application.Resources>
         <ResourceDictionary>
@@ -8,6 +9,15 @@
                 <ResourceDictionary Source="Themes/Tokens.xaml" />
                 <ResourceDictionary Source="Themes/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <infra:DateConverter x:Key="DateConverter" />
+            <infra:TimeConverter x:Key="TimeConverter" />
+            <infra:MoneyConverter x:Key="MoneyConverter" />
+            <infra:DateTimeConverter x:Key="DateTimeConverter" />
+            <infra:NullToVisibilityConverter x:Key="StringToVis" />
+            <infra:InitialsConverter x:Key="InitialsConverter" />
+            <infra:StatusLabelConverter x:Key="StatusLabelConverter" />
+            <infra:StatusBackgroundConverter x:Key="StatusBackgroundConverter" />
+            <infra:StatusForegroundConverter x:Key="StatusForegroundConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -1,0 +1,92 @@
+<Window x:Class="Dentiva.App.Views.Dialogs.NewVisitDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Record Visit"
+        Width="640" SizeToContent="Height"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None" ResizeMode="NoResize"
+        Background="Transparent" AllowsTransparency="True">
+    <Border Margin="16" Background="{StaticResource Brush.Surface}" CornerRadius="12"
+            BorderBrush="{StaticResource Brush.BorderSubtle}" BorderThickness="1" Effect="{StaticResource Shadow.Dialog}">
+        <ScrollViewer MaxHeight="640" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30,26">
+                <TextBlock Text="Record Visit" Style="{StaticResource Text.Subtitle}" />
+                <TextBlock x:Name="PatientLine" Style="{StaticResource Text.Secondary}" Margin="0,4,0,20" />
+
+                <TextBlock Text="Reason for visit *" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                <TextBox x:Name="ReasonBox" Height="36" />
+
+                <Grid Margin="0,14,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="16" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Chief complaint" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="ComplaintBox" Height="36" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Doctor" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="DoctorBox" Height="36" />
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock Text="Diagnosis" Style="{StaticResource FormLabel}" Margin="0,14,0,6" />
+                <TextBox x:Name="DiagnosisBox" Height="52" Style="{StaticResource MultilineTextBox}" MaxHeight="52" />
+
+                <TextBlock Text="Examination findings" Style="{StaticResource FormLabel}" Margin="0,14,0,6" />
+                <TextBox x:Name="ExamBox" Height="60" Style="{StaticResource MultilineTextBox}" MaxHeight="60" />
+
+                <TextBlock Text="Treatment performed" Style="{StaticResource FormLabel}" Margin="0,14,0,6" />
+                <TextBox x:Name="TreatmentBox" Height="60" Style="{StaticResource MultilineTextBox}" MaxHeight="60" />
+
+                <Grid Margin="0,14,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="16" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="16" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Procedure" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="ProcedureBox" Height="36" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Tooth (FDI)" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="ToothBox" Height="36" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="4">
+                        <TextBlock Text="Fee" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="FeeBox" Height="36" Width="110" />
+                    </StackPanel>
+                </Grid>
+
+                <Grid Margin="0,14,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="16" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="Follow-up date" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <DatePicker x:Name="FollowUpPicker" Height="36" />
+                    </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBlock Text="Medication (name)" Style="{StaticResource FormLabel}" Margin="0,0,0,6" />
+                        <TextBox x:Name="MedicationBox" Height="36" />
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock x:Name="ErrorText" Foreground="{StaticResource Brush.Danger}" Style="{StaticResource Text.Small}"
+                           Margin="0,12,0,0" Visibility="Collapsed" />
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,24,0,4">
+                    <Button Content="Cancel" Width="104" Height="36" Margin="0,0,10,0" Click="OnCancel" />
+                    <Button x:Name="SaveButton" Content="Save Visit" Style="{StaticResource PrimaryButton}" Width="130" Height="36" Click="OnSave" IsDefault="True" />
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Border>
+</Window>

@@ -56,6 +56,15 @@ public sealed class Patient
     }
 
     public string DisplayName => string.IsNullOrWhiteSpace(PreferredName) ? FullName : PreferredName;
+
+    public string AgeLabel
+    {
+        get
+        {
+            var age = AgeYears(DateOnly.FromDateTime(DateTime.Today));
+            return age is null ? "\u2014" : age + "y";
+        }
+    }
 }
 
 public sealed class PatientTag
