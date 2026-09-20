@@ -14,6 +14,7 @@ public sealed class Visit
     public DateOnly? FollowUpDate { get; set; }
     public VisitStatus Status { get; set; } = VisitStatus.Open;
     public long? AppointmentId { get; set; }
+    public List<VisitProcedure> Procedures { get; set; } = new();
     public string CreatedBy { get; set; } = string.Empty;
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; }

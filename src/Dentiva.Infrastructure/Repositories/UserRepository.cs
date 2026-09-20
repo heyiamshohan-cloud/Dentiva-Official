@@ -30,7 +30,7 @@ public sealed class UserRepository
         Guard.NotNullOrWhiteSpace(displayName);
 
         using var connection = _factory.CreateOpenConnection();
-        var id = connection.ExecuteScalar<long>(""”
+        var id = connection.ExecuteScalar<long>("""
             INSERT INTO users(username, password_hash, display_name, role_name, is_active, created_at)
             VALUES (@username, @hash, @display, @role, 1, @now)
             RETURNING id
